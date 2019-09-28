@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:gerenteloja/screens/home_screen.dart';
 import 'package:gerenteloja/screens/login_screen.dart';
 
 import 'blocs/login_bloc.dart';
@@ -19,7 +20,7 @@ class Main extends StatelessWidget {
           theme: ThemeData(
             primaryColor: Colors.pinkAccent,
           ),
-          home: LoginScreen(),
+          home: HomeScreen(),
         ));
   }
 }
