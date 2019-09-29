@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -72,6 +73,25 @@ class UserBloc extends BlocBase {
 
   void _unsubscribeToOrders(String uid) {
     _users[uid]['subscription'].cancel();
+  }
+
+  void onChangedSearch(String search) {
+    if (search.trim().isEmpty) {
+      _usersController.add(_users.values.toList());
+    } else {
+      _usersController.add(_filter(search.trim()));
+    }
+  }
+
+  List<Map<String, dynamic>> _filter(String search) {
+    List<Map<String, dynamic>> filteredUsers =
+        List.from(_users.values.toList());
+
+    filteredUsers.retainWhere((user) {
+      return user['name'].toUpperCase().contains(search.toUpperCase());
+    });
+
+    return filteredUsers;
   }
 
   @override

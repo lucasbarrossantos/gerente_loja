@@ -19,8 +19,7 @@ class UserTile extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: 16.0),
             Text('Pedidos: ${user['orders']}', style: textStyle),
-            Text('Gasto: R\$ ${user['money']}',
-                style: textStyle),
+            Text('Gasto: R\$ ${user['money']}', style: textStyle),
           ],
         ),
       );
