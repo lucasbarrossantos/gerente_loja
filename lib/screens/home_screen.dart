@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerenteloja/screens/tabs/orders_tab.dart';
 import 'package:gerenteloja/screens/tabs/users_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               children: <Widget>[
             UsersTab(),
-            Container(color: Colors.grey),
+            OrdersTab(),
             Container(color: Colors.white70),
           ])),
     );
