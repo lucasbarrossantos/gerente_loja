@@ -5,6 +5,7 @@ import 'package:gerenteloja/screens/home_screen.dart';
 import 'package:gerenteloja/screens/login_screen.dart';
 
 import 'blocs/login_bloc.dart';
+import 'blocs/orders_bloc.dart';
 
 void main() => runApp(Main());
 
@@ -15,6 +16,7 @@ class Main extends StatelessWidget {
         blocs: [
           Bloc((i) => LoginBloc()),
           Bloc((i) => UserBloc()),
+          Bloc((i) => OrdersBloc()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
