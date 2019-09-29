@@ -1,11 +1,14 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:rxdart/rxdart.dart';
 
 class UserBloc extends BlocBase {
-  final _usersController = BehaviorSubject();
+  final _usersController = BehaviorSubject<List>();
+  var controllerMasked = new MoneyMaskedTextController(
+      decimalSeparator: ',', thousandSeparator: '.');
 
-  Stream get outUser => _usersController.stream;
+  Stream<List> get outUser => _usersController.stream;
 
   Map<String, Map<String, dynamic>> _users = {};
 
@@ -61,7 +64,8 @@ class UserBloc extends BlocBase {
         money += order.data['totalPrice'];
       }
 
-      _users[uid].addAll({'money': money, 'orders': numOrders});
+      controllerMasked.updateValue(money);
+      _users[uid].addAll({'money': controllerMasked.text, 'orders': numOrders});
       _usersController.add(_users.values.toList());
     });
   }

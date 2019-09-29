@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:gerenteloja/blocs/user_bloc.dart';
 import 'package:gerenteloja/screens/home_screen.dart';
 import 'package:gerenteloja/screens/login_screen.dart';
 
@@ -13,6 +14,7 @@ class Main extends StatelessWidget {
     return BlocProvider(
         blocs: [
           Bloc((i) => LoginBloc()),
+          Bloc((i) => UserBloc()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

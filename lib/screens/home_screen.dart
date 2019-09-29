@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ]),
       ),
       body: SafeArea(
-            child: PageView(
+          child: PageView(
               controller: _pageController,
               onPageChanged: (page) {
                 setState(() {
@@ -59,11 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               },
               children: <Widget>[
-                UsersTab(),
-                Container(color: Colors.grey),
-                Container(color: Colors.white70),
-              ])
-      ),
+            UsersTab(),
+            Container(color: Colors.grey),
+            Container(color: Colors.white70),
+          ])),
     );
   }
 }
