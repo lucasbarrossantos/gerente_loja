@@ -1,6 +1,5 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/src/widgets/editable_text.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -92,6 +91,10 @@ class UserBloc extends BlocBase {
     });
 
     return filteredUsers;
+  }
+
+  Map<String, dynamic> getUsers(String uid) {
+    return _users[uid];
   }
 
   @override
