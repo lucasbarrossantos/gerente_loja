@@ -16,7 +16,7 @@ class Main extends StatelessWidget {
         blocs: [
           Bloc((i) => LoginBloc()),
           Bloc((i) => UserBloc()),
-          Bloc((i) => OrdersBloc()),
+          Bloc((i) => OrdersBloc()), 
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
