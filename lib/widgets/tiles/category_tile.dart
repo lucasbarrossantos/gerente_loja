@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
+import 'package:gerenteloja/screens/product_screen.dart';
 
 class CategoryTile extends StatelessWidget {
   final controllerMasked = new MoneyMaskedTextController(
@@ -39,7 +40,13 @@ class CategoryTile extends StatelessWidget {
                         title: Text(doc.data['title']),
                         trailing:
                             Text('R\$${formatMoney(doc.data['price'] + 0.0)}'),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ProductScreen(
+                                    categoryId: category.documentID,
+                                    product: doc,
+                                  )));
+                        },
                       );
                     }).toList()
                           ..add(ListTile(
@@ -48,7 +55,12 @@ class CategoryTile extends StatelessWidget {
                               child: Icon(Icons.add, color: Colors.pinkAccent),
                             ),
                             title: Text('Adicionar'),
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ProductScreen(
+                                        categoryId: category.documentID,
+                                      )));
+                            },
                           )));
                   }
                 })
