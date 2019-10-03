@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:gerenteloja/blocs/product_bloc.dart';
+import 'package:gerenteloja/widgets/images_widget.dart';
 
 class ProductScreen extends StatefulWidget {
   final String categoryId;
@@ -49,6 +50,16 @@ class _ProductScreenState extends State<ProductScreen> {
                 return ListView(
                   padding: EdgeInsets.all(16.0),
                   children: <Widget>[
+                    Text(
+                      'Imagens',
+                      style: TextStyle(color: Colors.grey, fontSize: 12.0),
+                    ),
+                    ImagesWidget(
+                      context: context,
+                      initialValue: snapshot.data['images'],
+                      onSaved: (list) {},
+                      validator: (list) {},
+                    ),
                     TextFormField(
                       initialValue: snapshot.data['title'],
                       style: _fieldStyle,
