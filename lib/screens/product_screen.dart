@@ -112,7 +112,10 @@ class _ProductScreenState extends State<ProductScreen> with ProductValidator {
                           validator: validateDescription,
                         ),
                         TextFormField(
-                          initialValue: formatMoney(snapshot.data['price'] + 0.0),
+                          initialValue: formatMoney(
+                              snapshot.data['price'] != null
+                                  ? snapshot.data['price'] + 0.0
+                                  : 0.0),
                           style: _fieldStyle,
                           decoration: _buildDecoration('Preço'),
                           keyboardType:
