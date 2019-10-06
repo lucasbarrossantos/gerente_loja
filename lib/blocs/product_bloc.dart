@@ -1,9 +1,12 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ProductBloc extends BlocBase {
+  final controllerMasked = new MoneyMaskedTextController(
+      decimalSeparator: ',', thousandSeparator: '.');
   final _dataController = BehaviorSubject<Map>();
   final _loadingController = BehaviorSubject<bool>();
   final _createdController = BehaviorSubject<bool>();
@@ -54,6 +57,10 @@ class ProductBloc extends BlocBase {
 
   void saveImages(List images) {
     unsavedData['images'] = images;
+  }
+
+  void saveSizes(List sizes) {
+    unsavedData['size'] = sizes;
   }
 
   Future<bool> saveProduct() async {

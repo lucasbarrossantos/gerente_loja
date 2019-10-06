@@ -1,4 +1,9 @@
+import 'package:flutter_masked_text/flutter_masked_text.dart';
+
 class ProductValidator {
+  final controllerMasked = new MoneyMaskedTextController(
+      decimalSeparator: ',', thousandSeparator: '.');
+
   String validateImages(List images) {
     if (images.isEmpty) {
       return 'Adicione uma imagem ao produto.';
@@ -22,15 +27,21 @@ class ProductValidator {
 
   String validatePrice(String text) {
     double price = double.tryParse(text);
-
     if (price != null) {
-      if (!text.contains('.') || text.split('.')[1].length != 2) {
-        return 'Utilize duas casas decimais!';
+      try {
+        controllerMasked.updateValue(price);
+      } catch (e) {
+        return 'Preço inválido';
       }
-    } else {
-      return 'Preço inválido';
     }
 
     return null;
+  }
+
+  String validatorSizes(List sizes) {
+    if (sizes.isEmpty)
+      return 'Adicione um tamanho';
+    else
+      return null;
   }
 }
