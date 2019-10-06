@@ -22,7 +22,7 @@ class ImageSourceSheet extends StatelessWidget {
     return BottomSheet(
         onClosing: () {},
         builder: (context) => Column(
-          mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 FlatButton(
                   child: Text('Câmera'),
